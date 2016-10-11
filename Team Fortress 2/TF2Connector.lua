@@ -36,7 +36,6 @@ end
 
 -------------------------------------------
 -- Helper Functions
-
 function conditionallySwapWave(pose)
     if myo.getArm() == "left" then
         if pose == "waveIn" then
@@ -55,7 +54,6 @@ end
 
 --------------------------------------------
 -- Weapon Functions
-
 function cycleWeaponForwards()
     myo.mouseScrollBy("1")
     myo.vibrate("short")
@@ -84,7 +82,6 @@ end
 
 -------------------------------------------
 -- Myo Accelerometer
-
 function onPeriodic()
 
     local x,y,z = myo.getAccel()
@@ -100,7 +97,6 @@ end
 
 ------------------------------------------
 -- Myo Poses
-
 function onPoseEdge(pose, edge)
 
     pose = conditionallySwapWave(pose)
@@ -140,7 +136,6 @@ end
 
 ---------------------------------------
 -- Locking Functions
-
 myo.setLockingPolicy("none")
 
 function onLock()
@@ -153,8 +148,6 @@ end
 
 ---------------------------------------
 -- Only activate when playing TF2
-
-
 function onForegroundWindowChange(app, title)
     if platform == "MacOS" then
         return true

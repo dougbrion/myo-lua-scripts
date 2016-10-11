@@ -24,7 +24,6 @@ end
 
 -------------------------------------------
  -- Helper Functions
-
  function conditionallySwapWave(pose)
     if myo.getArm() == "left" then
         if pose == "waveIn" then
@@ -43,7 +42,6 @@ end
 
 --------------------------------------------
 -- Weapon Functions
-
 function navigationPanel()
     myo.keyboard("1", "down")
 end
@@ -70,6 +68,18 @@ end
 
 -------------------------------------------
 -- Myo Accelerometer
+function onPeriodic()
+
+    local x,y,z = myo.getAccel()
+
+    currentTime = myo.getTimeMilliseconds()
+
+    if (x < -1.0 and punchTime < time - 1000) then
+        punchTime = currentTime
+        fireWeapon()
+    end
+
+end
 
 ------------------------------------------
 -- Myo Poses
